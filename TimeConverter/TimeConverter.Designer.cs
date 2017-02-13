@@ -1,4 +1,6 @@
-﻿namespace TimeConverter
+﻿using System;
+
+namespace TimeConverter
 {
     partial class TimeConverter
     {
@@ -39,12 +41,13 @@
             this.TimeInBox = new System.Windows.Forms.TextBox();
             this.PasteTimeBtn = new System.Windows.Forms.Button();
             this.CopyTimeBtn = new System.Windows.Forms.Button();
+            this.DotMode = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // TimeAddBtn
             // 
             this.TimeAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.TimeAddBtn.Location = new System.Drawing.Point(13, 13);
+            this.TimeAddBtn.Location = new System.Drawing.Point(9, 9);
             this.TimeAddBtn.Name = "TimeAddBtn";
             this.TimeAddBtn.Size = new System.Drawing.Size(110, 69);
             this.TimeAddBtn.TabIndex = 0;
@@ -55,7 +58,7 @@
             // TimeSubstractBtn
             // 
             this.TimeSubstractBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.TimeSubstractBtn.Location = new System.Drawing.Point(248, 13);
+            this.TimeSubstractBtn.Location = new System.Drawing.Point(244, 9);
             this.TimeSubstractBtn.Name = "TimeSubstractBtn";
             this.TimeSubstractBtn.Size = new System.Drawing.Size(110, 69);
             this.TimeSubstractBtn.TabIndex = 0;
@@ -66,7 +69,7 @@
             // TimeDiffLabel
             // 
             this.TimeDiffLabel.AutoSize = true;
-            this.TimeDiffLabel.Location = new System.Drawing.Point(130, 13);
+            this.TimeDiffLabel.Location = new System.Drawing.Point(126, 9);
             this.TimeDiffLabel.Name = "TimeDiffLabel";
             this.TimeDiffLabel.Size = new System.Drawing.Size(82, 13);
             this.TimeDiffLabel.TabIndex = 1;
@@ -74,14 +77,14 @@
             // 
             // TimeDifference
             // 
-            this.TimeDifference.Location = new System.Drawing.Point(133, 30);
+            this.TimeDifference.Location = new System.Drawing.Point(129, 26);
             this.TimeDifference.Name = "TimeDifference";
             this.TimeDifference.Size = new System.Drawing.Size(109, 20);
             this.TimeDifference.TabIndex = 2;
             // 
             // TimeResult
             // 
-            this.TimeResult.Location = new System.Drawing.Point(133, 109);
+            this.TimeResult.Location = new System.Drawing.Point(129, 105);
             this.TimeResult.Name = "TimeResult";
             this.TimeResult.Size = new System.Drawing.Size(109, 20);
             this.TimeResult.TabIndex = 3;
@@ -89,7 +92,7 @@
             // ResultLabel
             // 
             this.ResultLabel.AutoSize = true;
-            this.ResultLabel.Location = new System.Drawing.Point(130, 93);
+            this.ResultLabel.Location = new System.Drawing.Point(126, 89);
             this.ResultLabel.Name = "ResultLabel";
             this.ResultLabel.Size = new System.Drawing.Size(37, 13);
             this.ResultLabel.TabIndex = 4;
@@ -98,7 +101,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(130, 53);
+            this.label1.Location = new System.Drawing.Point(126, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 13);
             this.label1.TabIndex = 5;
@@ -106,14 +109,14 @@
             // 
             // TimeInBox
             // 
-            this.TimeInBox.Location = new System.Drawing.Point(133, 70);
+            this.TimeInBox.Location = new System.Drawing.Point(129, 66);
             this.TimeInBox.Name = "TimeInBox";
             this.TimeInBox.Size = new System.Drawing.Size(109, 20);
             this.TimeInBox.TabIndex = 6;
             // 
             // PasteTimeBtn
             // 
-            this.PasteTimeBtn.Location = new System.Drawing.Point(13, 89);
+            this.PasteTimeBtn.Location = new System.Drawing.Point(9, 85);
             this.PasteTimeBtn.Name = "PasteTimeBtn";
             this.PasteTimeBtn.Size = new System.Drawing.Size(110, 40);
             this.PasteTimeBtn.TabIndex = 7;
@@ -123,7 +126,7 @@
             // 
             // CopyTimeBtn
             // 
-            this.CopyTimeBtn.Location = new System.Drawing.Point(249, 89);
+            this.CopyTimeBtn.Location = new System.Drawing.Point(245, 85);
             this.CopyTimeBtn.Name = "CopyTimeBtn";
             this.CopyTimeBtn.Size = new System.Drawing.Size(109, 40);
             this.CopyTimeBtn.TabIndex = 8;
@@ -131,11 +134,22 @@
             this.CopyTimeBtn.UseVisualStyleBackColor = true;
             this.CopyTimeBtn.Click += new System.EventHandler(this.CopyTimeBtn_Click);
             // 
+            // DotMode
+            // 
+            this.DotMode.AutoSize = true;
+            this.DotMode.Location = new System.Drawing.Point(9, 131);
+            this.DotMode.Name = "DotMode";
+            this.DotMode.Size = new System.Drawing.Size(152, 17);
+            this.DotMode.TabIndex = 9;
+            this.DotMode.Text = "Alternative separator mode";
+            this.DotMode.UseVisualStyleBackColor = true;
+            // 
             // TimeConverter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 139);
+            this.ClientSize = new System.Drawing.Size(367, 153);
+            this.Controls.Add(this.DotMode);
             this.Controls.Add(this.CopyTimeBtn);
             this.Controls.Add(this.PasteTimeBtn);
             this.Controls.Add(this.TimeInBox);
@@ -154,6 +168,7 @@
 
         }
 
+
         #endregion
 
         private System.Windows.Forms.Button TimeAddBtn;
@@ -166,6 +181,7 @@
         private System.Windows.Forms.TextBox TimeInBox;
         private System.Windows.Forms.Button PasteTimeBtn;
         private System.Windows.Forms.Button CopyTimeBtn;
+        private System.Windows.Forms.CheckBox DotMode;
     }
 }
 

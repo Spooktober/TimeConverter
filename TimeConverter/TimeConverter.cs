@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +17,6 @@ namespace TimeConverter
         private static TimeSpan TimeIn;
         private static TimeSpan TimeResultCalculated;
 
-
         public TimeConverter()
         {
             InitializeComponent();
@@ -24,45 +24,71 @@ namespace TimeConverter
 
         private void TimeAddBtn_Click(object sender, EventArgs e)
         {
+            string mode = "mm':'ss";
             try
             {
-                TimeDiff = TimeSpan.Parse(TimeDifference.Text);
-                TimeIn = TimeSpan.Parse(TimeInBox.Text);
-                TimeResultCalculated = TimeIn.Add(TimeDiff);
-                TimeResult.Text = TimeResultCalculated.ToString();
+                if (DotMode.Checked)
+                {
+                    mode = "mm'.'ss";
+                    TimeDiff = TimeSpan.ParseExact(TimeDifference.Text, mode, null);
+                    TimeIn = TimeSpan.ParseExact(TimeInBox.Text, mode, null);
+                    TimeResultCalculated = TimeIn.Add(TimeDiff);
+                    TimeResult.Text = TimeResultCalculated.ToString(@"mm\.ss");
+                }
+                else
+                {
+                    TimeDiff = TimeSpan.ParseExact(TimeDifference.Text, mode, null);
+                    TimeIn = TimeSpan.ParseExact(TimeInBox.Text, mode, null);
+                    TimeResultCalculated = TimeIn.Add(TimeDiff);
+                    TimeResult.Text = TimeResultCalculated.ToString(@"mm\:ss");
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Incorrect input.");
+                MessageBox.Show("Incorrect input. Be sure to have alternative input mode on if you are using dot as separator.");
             }
         }
 
         private void TimeSubstractBtn_Click(object sender, EventArgs e)
         {
+            string mode = "mm':'ss";
             try
             {
-                TimeDiff = TimeSpan.Parse(TimeDifference.Text);
-                TimeIn = TimeSpan.Parse(TimeInBox.Text);
-                TimeResultCalculated = TimeIn.Subtract(TimeDiff);
-                if (TimeDiff > TimeIn)
+                if (DotMode.Checked)
                 {
-                    TimeResult.Text = "-" + TimeResultCalculated.ToString();
+                    mode = "mm'.'ss";
+                    TimeDiff = TimeSpan.ParseExact(TimeDifference.Text, mode, null);
+                    TimeIn = TimeSpan.ParseExact(TimeInBox.Text, mode, null);
+                    TimeResultCalculated = TimeIn.Subtract(TimeDiff);
+                    if (TimeDiff > TimeIn)
+                    {
+                        TimeResult.Text = "-" + TimeResultCalculated.ToString(@"mm\.ss");
+                    }
+                    else
+                    {
+                        TimeResult.Text = TimeResultCalculated.ToString(@"mm\.ss");
+                    }
                 }
                 else
                 {
-                    TimeResult.Text = TimeResultCalculated.ToString();
+                    TimeDiff = TimeSpan.ParseExact(TimeDifference.Text, mode, null);
+                    TimeIn = TimeSpan.ParseExact(TimeInBox.Text, mode, null);
+                    TimeResultCalculated = TimeIn.Subtract(TimeDiff);
+                    if (TimeDiff > TimeIn)
+                    {
+                        TimeResult.Text = "-" + TimeResultCalculated.ToString(@"mm\:ss");
+                    }
+                    else
+                    {
+                        TimeResult.Text = TimeResultCalculated.ToString(@"mm\:ss");
+                    }
                 }
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Incorrect input.");
+                MessageBox.Show("Incorrect input. Be sure to have alternative input mode on if you are using dot as separator.");
             }
-        }
-
-        private void PasteTimeBtn_Click(object sender, EventArgs e)
-        {
-            TimeInBox.Text = Clipboard.GetText();
         }
 
         private void CopyTimeBtn_Click(object sender, EventArgs e)
@@ -71,10 +97,16 @@ namespace TimeConverter
             {
                 Clipboard.SetText(TimeResult.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Nothing to copy.");
             }
         }
+    
+        private void PasteTimeBtn_Click(object sender, EventArgs e)
+            {
+                TimeInBox.Text = Clipboard.GetText();
+            }
+
     }
 }
