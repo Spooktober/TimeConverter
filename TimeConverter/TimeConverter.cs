@@ -108,5 +108,11 @@ namespace TimeConverter
                 TimeInBox.Text = Clipboard.GetText();
             }
 
+        private void ClearInput_Click(object sender, EventArgs e)
+        {
+            TimeDifference.Text = "";
+            TimeInBox.Text = "";
+            TimeResult.Text = "";
+        }
     }
 }

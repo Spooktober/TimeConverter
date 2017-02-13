@@ -42,6 +42,7 @@ namespace TimeConverter
             this.PasteTimeBtn = new System.Windows.Forms.Button();
             this.CopyTimeBtn = new System.Windows.Forms.Button();
             this.DotMode = new System.Windows.Forms.CheckBox();
+            this.ClearInput = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TimeAddBtn
@@ -137,18 +138,29 @@ namespace TimeConverter
             // DotMode
             // 
             this.DotMode.AutoSize = true;
-            this.DotMode.Location = new System.Drawing.Point(9, 131);
+            this.DotMode.Location = new System.Drawing.Point(9, 135);
             this.DotMode.Name = "DotMode";
             this.DotMode.Size = new System.Drawing.Size(152, 17);
             this.DotMode.TabIndex = 9;
             this.DotMode.Text = "Alternative separator mode";
             this.DotMode.UseVisualStyleBackColor = true;
             // 
+            // ClearInput
+            // 
+            this.ClearInput.Location = new System.Drawing.Point(245, 131);
+            this.ClearInput.Name = "ClearInput";
+            this.ClearInput.Size = new System.Drawing.Size(109, 23);
+            this.ClearInput.TabIndex = 10;
+            this.ClearInput.Text = "Clear Input";
+            this.ClearInput.UseVisualStyleBackColor = true;
+            this.ClearInput.Click += new System.EventHandler(this.ClearInput_Click);
+            // 
             // TimeConverter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 153);
+            this.ClientSize = new System.Drawing.Size(367, 156);
+            this.Controls.Add(this.ClearInput);
             this.Controls.Add(this.DotMode);
             this.Controls.Add(this.CopyTimeBtn);
             this.Controls.Add(this.PasteTimeBtn);
@@ -182,6 +194,7 @@ namespace TimeConverter
         private System.Windows.Forms.Button PasteTimeBtn;
         private System.Windows.Forms.Button CopyTimeBtn;
         private System.Windows.Forms.CheckBox DotMode;
+        private System.Windows.Forms.Button ClearInput;
     }
 }
 
