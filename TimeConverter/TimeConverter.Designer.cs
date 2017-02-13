@@ -172,6 +172,7 @@ namespace TimeConverter
             this.Controls.Add(this.TimeDiffLabel);
             this.Controls.Add(this.TimeSubstractBtn);
             this.Controls.Add(this.TimeAddBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TimeConverter";
             this.Text = "TimeConverter";
